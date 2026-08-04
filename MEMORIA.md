@@ -1,95 +1,95 @@
 # Memória do projeto — Portfólio UGC Bruna Aquino (2026)
 
-## O que foi pedido
-Recriar o portfólio em PDF da Bruna Aquino como um site HTML interativo,
-mantendo a montagem/paleta original, mas com a capa trocada pela nova
-foto enviada, com uma transição esfumaçada para o lado direito onde
-entram o nome e as informações.
-
-## Fonte de conteúdo
-Todo o texto, dados de métricas e imagens vieram do PDF original
-(`bruna_aquino.pdf`, 12 páginas) enviado na conversa. As fotos usadas em
-cada seção foram extraídas diretamente das imagens embutidas nesse PDF
-(mockups de celular, fotos de produto, fotos pessoais). A foto da capa é
-a nova foto enviada por você no chat (sentada na poltrona, cortina ao
-fundo).
-
-## Paleta de cores (extraída por amostragem de pixel do PDF)
-- Creme (fundo claro): `#F1F1EF`
-- Terracota (destaque/seções escuras): `#9E3C23`
-- Grafite (texto): `#3D3D3D`
-- Bege dos "pills"/tags: `#E4DDD5`
-- Cartão escuro das métricas: `#0B0E15`
-
-## Tipografia
-- **Mrs Saint Delafield** (script/cursiva) — usada só na letra maiúscula
-  de destaque dos títulos (ex.: o "B" de "Bruna", o "S" de "Sobre mim"),
-  reproduzindo o efeito de capitular do PDF original.
-- **Poppins** (300 a 800) — usada no restante dos títulos e em todo o
-  corpo de texto.
-- Ambas as fontes estão hospedadas localmente em `assets/fonts/` (não
-  dependem de internet nem de CDN do Google Fonts).
-
-## Estrutura de arquivos
-```
-index.html              → todo o conteúdo/seções do site
-assets/css/style.css    → estilo, paleta, responsividade, animações
-assets/js/main.js       → interatividade (menu, scroll reveal, tabs,
-                           flip cards, contadores animados, copiar e-mail)
-assets/fonts/           → fontes .woff2 usadas (self-hosted)
-assets/img/             → fotos usadas em cada seção
-```
-
-### Origem de cada imagem em `assets/img/`
-| Arquivo | Uso | Origem |
-|---|---|---|
-| `capa.jpg` | Capa | Foto nova enviada por você no chat |
-| `sobre-1.jpg`, `sobre-2.jpg`, `sobre-full.png` | Sobre mim | Extraídas da página 2 do PDF |
-| `atuacao.jpg` | Frentes de atuação | Página 3 do PDF |
-| `destaque-storytelling.jpg`, `destaque-clips.jpg`, `destaque-tiktokshop.jpg` | Conteúdos em destaque | Página 5 do PDF |
-| `diverso-unboxing.jpg`, `diverso-grwm.jpg`, `diverso-acessorio.jpg`, `diverso-produto.jpg` | Conteúdos diversos (aba 1) | Página 6 do PDF |
-| `diverso-cuidados.jpg`, `diverso-depoimento.jpg`, `diverso-visitas.jpg`, `diverso-unboxing2.jpg` | Conteúdos diversos (aba 2) | Página 7 do PDF |
-| `contato.jpg` | Vamos trabalhar juntos | Página 12 do PDF |
-
-## Dados de métricas usados (extraídos do texto/gráficos do PDF)
-- **TikTok:** total/novos espectadores, visualizações, curtidas,
-  comentários, compartilhamentos, recompensas, gênero e idade da audiência.
-- **Instagram:** visualizações (30 dias), visualizadores, % seguidores
-  vs. não seguidores, gênero, faixas etárias, principais cidades.
-- **YouTube:** visualizações, "gostei", comentários, compartilhamentos,
-  visualizações recentes, gênero e idade da audiência.
-
-Todos esses números estão marcados no HTML com o comentário/observação
-do próprio PDF: *"Métricas completas são apresentadas conforme o escopo
-do projeto."*
-
-## Interatividade implementada
-- Barra de progresso de rolagem e menu fixo que muda ao rolar.
-- Menu mobile em tela cheia (hambúrguer).
-- Animações de entrada ("reveal") por seção ao rolar a página.
-- Leve parallax na foto da capa ao mover o mouse (desktop).
-- Cards de "Frentes de atuação" viram (flip) ao clicar, revelando mais texto.
-- Botão "+" em "Nichos que atendo" expande nichos extras.
-- Abas em "Conteúdos diversos" (Unboxing & rotina / Cuidados & social).
-- Abas de plataforma em "Métricas" (TikTok / Instagram / YouTube), com
-  números e barras animados quando a seção entra na tela.
-- Acordeão nas 4 etapas do "Processo criativo".
-- Clique para copiar o e-mail de contato.
-
-## Pendências / pontos para você decidir
-1. **Redes sociais:** os ícones de Instagram, TikTok e YouTube no rodapé
-   estão como link placeholder (`href="#"`) — falta colocar o link real
-   de cada perfil. Procure por `<!-- ... social-icon -->` em `index.html`
-   na seção `id="contato"`.
-2. **E-mail de contato:** usei `brunaquino.mkt@gmail.com`. Se quiser outro
-   e-mail (ou WhatsApp), é só avisar.
-3. As fotos/mockups de celular são as mesmas do PDF original — se você
-   tiver versões em resolução maior ou quiser trocar alguma, é só enviar.
+## O que é
+Site estático de portfólio da Bruna Aquino (UGC Creator), recriado a partir
+do PDF original de 12 páginas. Sem build, sem dependências: abre direto no
+navegador ou em qualquer hospedagem estática.
 
 ## Como visualizar localmente
-Abra `index.html` direto no navegador, ou rode um servidor simples na
-pasta do projeto:
 ```
 python3 -m http.server 8000
 ```
 e acesse `http://localhost:8000`.
+
+## Estrutura
+```
+index.html              → todo o conteúdo/seções
+assets/css/style.css    → paleta, tipografia, layout, responsividade
+assets/js/main.js       → marquee, reveal, nichos, abas de métricas, copiar e-mail
+assets/fonts/           → Fraunces, Manrope e JetBrains Mono (self-hosted, .woff2)
+assets/img/             → fotos de cada seção
+```
+
+## Direção visual
+Versão atual = design editorial (numeração de seções, marquee, dropcaps em
+itálico, cards de serviço em grid com filete) + as fotos reais do acervo.
+
+- **Fraunces** (serifada variável) — títulos, dropcaps, números das etapas
+- **Manrope** — corpo de texto e navegação
+- **JetBrains Mono** — eyebrows, tags, labels e o marquee
+
+Fontes servidas do próprio domínio (`assets/fonts/`), subsets latin e
+latin-ext. Sem CDN do Google Fonts — nada sai para fora no carregamento.
+
+### Paleta
+| Token | Cor | Uso |
+|---|---|---|
+| `--cream` | `#F3EEE3` | fundo claro |
+| `--paper` | `#FBF8F1` | cards |
+| `--ink` | `#221E1B` | texto e faixa do marquee |
+| `--ink-soft` | `#5B534B` | texto secundário |
+| `--rust` | `#A63F24` | destaque, seção de nichos |
+| `--rust-deep` | `#7E2E19` | seção de contato |
+| `--line` | `#DED4C1` | filetes e grid |
+| `--dark` | `#1C1815` | seção de métricas |
+
+## Hero
+A `capa.jpg` é **imagem de fundo** da seção inteira (não polaroid ao lado).
+O recorte usa `object-position` + `transform: scale/translateX` para jogar a
+cena para a direita, e `.hero-veil` faz o dissolve esfumaçado que abre a
+coluna de texto à esquerda. No mobile o véu vira vertical.
+
+## Origem das imagens (`assets/img/`)
+| Arquivo | Uso | Origem |
+|---|---|---|
+| `capa.jpg` | Fundo do hero | Foto nova enviada no chat |
+| `sobre-2.jpg`, `sobre-1.jpg` | Sobre mim (polaroids) | Página 2 do PDF |
+| `atuacao.jpg` | Processo criativo | Página 3 do PDF |
+| `destaque-*.jpg` | Conteúdos em destaque | Página 5 do PDF |
+| `diverso-*.jpg` | Conteúdos diversos | Páginas 6 e 7 do PDF |
+| `contato.jpg` | Vamos trabalhar juntos | Página 12 do PDF |
+
+## Interatividade
+- Barra de progresso de rolagem, header fixo que ganha filete ao rolar e
+  link de navegação ativo conforme a seção.
+- Marquee ("carrossel de texto") entre o hero e o "Sobre mim".
+- Reveal por seção ao rolar; as etapas do processo acendem ao entrar na tela.
+- Nichos clicáveis (liga/desliga) com contador; o "+ seu nicho aqui?" leva
+  ao contato.
+- Abas de plataforma em Métricas (TikTok / Instagram / YouTube) com
+  contadores e barras animados.
+- Clique para copiar o e-mail (com fallback para `mailto:`).
+- Parallax leve na foto do hero e ponto de cursor — só em desktop com mouse,
+  e ambos desligados em `prefers-reduced-motion`.
+
+## Decisões de robustez já aplicadas
+- `.reveal` só esconde conteúdo quando o JS está ativo (`html.js`); sem JS a
+  página continua legível.
+- Todas as imagens com `width`/`height` (evita salto de layout) e `loading="lazy"`
+  exceto a do hero, que é `fetchpriority="high"`.
+- `scroll-margin-top: 80px` nas seções — âncoras não param embaixo do header.
+- Meta OG/Twitter + JSON-LD (`Person`) para link compartilhado e busca.
+- Contrastes de texto secundário sobre fundo escuro ajustados para AA.
+
+## Pendências
+1. **Links das redes sociais** — Instagram, TikTok e YouTube estão como
+   `href="#"`. Procure por `<!-- TODO:` em `index.html`, seção `id="contato"`.
+2. **Vídeos** — os mockups de celular hoje são imagens estáticas. Falta
+   definir quais vídeos entram e como (arquivo local, YouTube/Vimeo ou
+   embed do TikTok/Instagram).
+3. **Marcas parceiras** — a seção existe com 4 slots "Sua marca aqui";
+   falta subir os logos reais.
+4. **E-mail** — está `brunaquino.mkt@gmail.com`. Trocar se for outro
+   (ou acrescentar WhatsApp).
+5. **Métricas** — vale marcar o período de cada número (ex.: "TikTok,
+   últimos 28 dias") para dar contexto a quem avalia.
