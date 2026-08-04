@@ -24,12 +24,23 @@ assets/img/             → fotos de cada seção
 Versão atual = design editorial (numeração de seções, marquee, dropcaps em
 itálico, cards de serviço em grid com filete) + as fotos reais do acervo.
 
-- **Fraunces** (serifada variável) — títulos, dropcaps, números das etapas
-- **Manrope** — corpo de texto e navegação
-- **JetBrains Mono** — eyebrows, tags, labels e o marquee
+| Papel | Fonte | Token CSS |
+|---|---|---|
+| Títulos e aberturas de tema | **Hatton** | `--font-display` |
+| Iniciais / capitulares | **Symphony** | `--font-initial` |
+| Corpo e navegação | **Manrope** | `--font-body` |
+| Eyebrows, tags, marquee | **JetBrains Mono** | `--font-mono` |
 
-Fontes servidas do próprio domínio (`assets/fonts/`), subsets latin e
-latin-ext. Sem CDN do Google Fonts — nada sai para fora no carregamento.
+Hatton e Symphony são comerciais e **ainda não estão no repo**. Os
+`@font-face` já existem no topo do `style.css` apontando para
+`assets/fonts/Hatton.woff2` e `assets/fonts/Symphony.woff2` (com `.otf`
+como alternativa). Enquanto os arquivos não chegarem, o navegador cai no
+fallback **Fraunces** sem quebrar nada — basta soltar os arquivos com
+esses nomes na pasta que o site passa a usá-los, sem tocar no CSS.
+
+Manrope, JetBrains Mono e o fallback Fraunces são servidos do próprio
+domínio (`assets/fonts/`), subsets latin e latin-ext. Sem CDN do Google
+Fonts — nada sai para fora no carregamento.
 
 ### Paleta
 | Token | Cor | Uso |
@@ -82,14 +93,18 @@ coluna de texto à esquerda. No mobile o véu vira vertical.
 - Contrastes de texto secundário sobre fundo escuro ajustados para AA.
 
 ## Pendências
-1. **Links das redes sociais** — Instagram, TikTok e YouTube estão como
+1. **Fontes Hatton e Symphony** — subir os `.woff2` (ou `.otf`) em
+   `assets/fonts/`. Sem eles o site roda no fallback Fraunces.
+2. **Links das redes sociais** — Instagram, TikTok e YouTube estão como
    `href="#"`. Procure por `<!-- TODO:` em `index.html`, seção `id="contato"`.
-2. **Vídeos** — os mockups de celular hoje são imagens estáticas. Falta
-   definir quais vídeos entram e como (arquivo local, YouTube/Vimeo ou
-   embed do TikTok/Instagram).
-3. **Marcas parceiras** — a seção existe com 4 slots "Sua marca aqui";
+3. **Vídeos** — decidido: arquivos locais no repo. A estrutura já está
+   pronta (CSS do `<video>` no mockup, autoplay mudo em loop ao entrar na
+   tela, pausa ao sair, botão de som opcional). Falta subir os arquivos em
+   `assets/video/` — veja `assets/video/LEIA-ME.md` para os nomes
+   esperados, o snippet de markup e o comando de compressão.
+4. **Marcas parceiras** — a seção existe com 4 slots "Sua marca aqui";
    falta subir os logos reais.
-4. **E-mail** — está `brunaquino.mkt@gmail.com`. Trocar se for outro
+5. **E-mail** — está `brunaquino.mkt@gmail.com`. Trocar se for outro
    (ou acrescentar WhatsApp).
-5. **Métricas** — vale marcar o período de cada número (ex.: "TikTok,
+6. **Métricas** — vale marcar o período de cada número (ex.: "TikTok,
    últimos 28 dias") para dar contexto a quem avalia.

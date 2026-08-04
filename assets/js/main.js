@@ -120,6 +120,36 @@
     metricsIo.observe(metricsSection);
   }
 
+  /* ---------- vídeos dos mockups: tocam mudos ao entrar na tela ---------- */
+  const videos = document.querySelectorAll('.phone-screen video');
+  if (videos.length) {
+    const videoIo = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        const v = e.target;
+        const card = v.closest('.phone-card');
+        if (e.isIntersecting && !reduceMotion) {
+          v.play().then(() => card && card.classList.add('is-playing')).catch(() => {});
+        } else {
+          v.pause();
+          if (card) card.classList.remove('is-playing');
+        }
+      });
+    }, { threshold: 0.5 });
+    videos.forEach(v => {
+      v.muted = true; // exigido para autoplay
+      videoIo.observe(v);
+      // botao de som, se existir no markup
+      const toggle = v.parentElement.querySelector('.sound-toggle');
+      if (!toggle) return;
+      toggle.addEventListener('click', () => {
+        v.muted = !v.muted;
+        toggle.textContent = v.muted ? '🔇' : '🔊';
+        toggle.setAttribute('aria-label', v.muted ? 'Ativar som' : 'Desativar som');
+        if (!v.muted) v.play().catch(() => {});
+      });
+    });
+  }
+
   /* ---------- copiar e-mail ---------- */
   const emailCopy = document.getElementById('emailCopy');
   if (emailCopy) {
