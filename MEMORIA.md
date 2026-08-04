@@ -54,17 +54,26 @@ Fonts — nada sai para fora no carregamento.
 | `--line` | `#DED4C1` | filetes e grid |
 | `--dark` | `#1C1815` | seção de métricas |
 
-## Hero
-A `capa.jpg` é **imagem de fundo** da seção inteira (não polaroid ao lado).
-O recorte usa `object-position` + `transform: scale/translateX` para jogar a
-cena para a direita, e `.hero-veil` faz o dissolve esfumaçado que abre a
-coluna de texto à esquerda. No mobile o véu vira vertical.
+## Seções com foto de fundo
+Duas seções usam foto de fundo em vez de imagem ao lado. Nas duas o padrão
+é o mesmo: `<img>` absoluta com `object-fit:cover` no enquadramento
+original (sem zoom), um `.*-veil` de gradiente por cima abrindo a coluna de
+texto, e o texto num terceiro nível de `z-index`.
+
+| Seção | Foto | Texto fica | Véu |
+|---|---|---|---|
+| Hero | `capa.jpg` | à esquerda | dissolve da esquerda para a direita |
+| Sobre mim | `sobre-fundo.jpg` | à direita | dissolve da direita para a esquerda |
+
+No mobile os dois véus viram verticais (escurecem topo e base) para o texto
+continuar legível sobre a foto.
 
 ## Origem das imagens (`assets/img/`)
 | Arquivo | Uso | Origem |
 |---|---|---|
 | `capa.jpg` | Fundo do hero | Foto nova enviada no chat |
-| `sobre-2.jpg`, `sobre-1.jpg` | Sobre mim (polaroids) | Página 2 do PDF |
+| `sobre-fundo.jpg` | Fundo do "Sobre mim" | Foto enviada no chat |
+| `sobre-1.jpg`, `sobre-2.jpg` | **não usadas hoje** | Página 2 do PDF |
 | `atuacao.jpg` | Processo criativo | Página 3 do PDF |
 | `destaque-*.jpg` | Conteúdos em destaque | Página 5 do PDF |
 | `diverso-*.jpg` | Conteúdos diversos | Páginas 6 e 7 do PDF |

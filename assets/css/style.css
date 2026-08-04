@@ -231,9 +231,7 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--rust); outline-off
 .hero-inner{position:relative; z-index:3; width:100%;}
 .hero-photo{position:absolute; inset:0; z-index:0; will-change:transform;}
 .hero-photo img{
-  width:100%; height:100%; object-fit:cover; object-position:50% 26%;
-  /* desloca a cena para a direita, liberando a coluna de texto a esquerda */
-  transform:scale(1.34) translateX(13%);
+  width:100%; height:100%; object-fit:cover; object-position:center;
 }
 /* dissolve esfumacado: foto a direita, texto legivel a esquerda */
 .hero-veil{
@@ -280,7 +278,7 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--rust); outline-off
 /* no mobile a foto vai para tras do texto: veu vertical garante leitura */
 @media(max-width:900px){
   .hero{padding:130px 0 70px; align-items:flex-end;}
-  .hero-photo img{object-position:50% 16%;}
+  .hero-photo img{object-position:center;}
   .hero-veil{
     background:
       linear-gradient(180deg, rgba(var(--cream-rgb),.8) 0%, rgba(var(--cream-rgb),.25) 26%, rgba(var(--cream-rgb),.82) 56%, var(--cream) 78%);
@@ -313,6 +311,30 @@ section{padding:120px 0; scroll-margin-top:80px;}
 .js .reveal{opacity:0; transform:translateY(28px); transition:opacity .7s ease, transform .7s ease;}
 .js .reveal.in{opacity:1; transform:translateY(0);}
 @media (prefers-reduced-motion: reduce){ .js .reveal{opacity:1; transform:none;} }
+
+
+/* ---------- sobre mim (foto de fundo, texto por cima) ---------- */
+.sobre{position:relative; overflow:hidden; isolation:isolate; padding:130px 0; min-height:92svh; display:flex; align-items:center;}
+.sobre-photo{position:absolute; inset:0; z-index:0;}
+.sobre-photo img{width:100%; height:100%; object-fit:cover; object-position:center 42%;}
+.sobre-veil{
+  position:absolute; inset:0; z-index:1; pointer-events:none;
+  background:
+    linear-gradient(270deg, var(--cream) 0%, rgba(var(--cream-rgb),.97) 24%, rgba(var(--cream-rgb),.74) 40%, rgba(var(--cream-rgb),.2) 58%, rgba(var(--cream-rgb),0) 70%),
+    linear-gradient(180deg, var(--cream) 0%, rgba(var(--cream-rgb),.35) 12%, rgba(var(--cream-rgb),0) 26%, rgba(var(--cream-rgb),0) 72%, rgba(var(--cream-rgb),.5) 88%, var(--cream) 100%);
+}
+.sobre-inner{position:relative; z-index:2; width:100%; display:flex; flex-direction:column; align-items:flex-end;}
+.sobre .section-head{margin-bottom:40px;}
+.sobre .section-head, .sobre .about-text{width:min(560px,100%);}
+
+@media(max-width:900px){
+  .sobre{padding:90px 0; min-height:0; display:block;}
+  .sobre-veil{
+    background:linear-gradient(180deg, rgba(var(--cream-rgb),.72) 0%, rgba(var(--cream-rgb),.35) 22%, rgba(var(--cream-rgb),.9) 50%, var(--cream) 70%);
+  }
+  .sobre-inner{align-items:stretch;}
+  .sobre .section-head, .sobre .about-text{width:100%;}
+}
 
 /* ---------- about ---------- */
 .about{display:grid; grid-template-columns:0.85fr 1.15fr; gap:70px; align-items:start;}
