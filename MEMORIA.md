@@ -11,6 +11,8 @@ python3 -m http.server 8000
 ```
 e acesse `http://localhost:8000`.
 
+O histórico de mudanças fica no [CHANGELOG.md](CHANGELOG.md).
+
 ## Estrutura
 ```
 index.html              → todo o conteúdo/seções
