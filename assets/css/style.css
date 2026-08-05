@@ -663,3 +663,83 @@ footer{background:var(--ink); color:rgba(243,238,227,.75); padding:28px 0; font-
 
 /* imagens com proporcao reservada evitam salto de layout */
 .about-photos img,.process-photo img,.cta-photo img,.polaroid img{background:var(--line);}
+
+/* ============================================================
+   IMPRESSAO / PDF
+   No papel nao existe viewport nem scroll: as secoes que posicionam a foto
+   de forma absoluta (hero e sobre) precisam virar fluxo normal, senao o
+   conteudo e recortado. Vale a mesma logica do mobile: coluna unica.
+   ============================================================ */
+@media print{
+  @page{ size:A4; margin:11mm 0; }
+
+  *{ -webkit-print-color-adjust:exact !important; print-color-adjust:exact !important; }
+  html{ scroll-behavior:auto; }
+  body{ background:var(--cream); }
+
+  header, #progress, .cursor-dot, .mobile-panel, .marquee-section,
+  .hero-ctas, .nav-cta, .sound-toggle, .play-badge, .hero-bg-grid{ display:none !important; }
+
+  /* o reveal deixa tudo em opacity:0 ate o JS rodar */
+  .reveal, .js .reveal{ opacity:1 !important; transform:none !important; }
+  .step .step-num{ background:var(--rust) !important; color:var(--paper) !important; border-color:var(--rust) !important; }
+
+  section{ padding:16mm 0 !important; overflow:visible !important; }
+  .wrap{ max-width:none; padding-left:15mm !important; padding-right:15mm !important; }
+
+  /* HERO: foto absoluta -> bloco no fluxo, texto abaixo */
+  .hero{
+    display:block !important; height:auto !important; min-height:0 !important;
+    padding:0 0 14mm !important;
+  }
+  .hero-photo{
+    position:relative !important; inset:auto !important; width:100% !important;
+    height:105mm !important; margin-bottom:10mm;
+    -webkit-mask-image:none !important; mask-image:none !important;
+  }
+  .hero-photo img{ object-position:center 30% !important; }
+  .hero-inner{ padding-left:15mm; padding-right:15mm; }
+  .hero h1{ font-size:52pt !important; margin-bottom:5mm; }
+  .hero h1 .line2{ margin-left:8mm !important; }
+
+  /* SOBRE: mesma conversao */
+  .sobre{
+    display:block !important; height:auto !important; min-height:0 !important;
+    padding:0 0 16mm !important;
+  }
+  .sobre-photo{
+    position:relative !important; inset:auto !important; width:100% !important;
+    height:95mm !important; margin-bottom:10mm;
+    -webkit-mask-image:none !important; mask-image:none !important;
+  }
+  .sobre-inner{ align-items:stretch !important; padding-left:15mm; padding-right:15mm; }
+  .sobre .section-head, .sobre .about-text{ width:100% !important; }
+
+  /* titulo nunca parte no meio nem fica orfao no fim da pagina */
+  h1, h2, h3, h4, .section-head, .eyebrow{ break-inside:avoid; break-after:avoid; }
+  .service-row, .step, .phone-card, .stat-card, .metric-card, .quotebar,
+  .brand-slot, .bars-card, .demo-block, .about-text p, .niche-grid,
+  .format-pills, .brand-grid{ break-inside:avoid; }
+  #nichos, #marcas{ break-inside:avoid; }
+
+  /* no papel cabem as tres plataformas, nao so a aba aberta */
+  .metrics-tabs{ display:none !important; }
+  .metric-panel{ display:block !important; margin-bottom:12mm; break-inside:avoid; }
+  .metric-panel::before{
+    content:attr(data-mpanel);
+    display:block; margin-bottom:5mm;
+    font-family:var(--font-mono); font-size:9pt; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--cream);
+  }
+
+  .phone-grid{ grid-template-columns:repeat(4,1fr) !important; gap:5mm; }
+  .phone-grid.three-col{ grid-template-columns:repeat(3,1fr) !important; margin-bottom:12mm; }
+  .phone-frame:hover{ transform:none; }
+  .service-row:hover{ padding-left:0 !important; background:none !important; }
+
+  /* contato em coluna unica para o e-mail nao espremer */
+  .cta-wrap{ grid-template-columns:1fr !important; gap:10mm !important; }
+  .cta-photo{ justify-self:start !important; max-width:70mm !important; transform:none !important; }
+  .email-copy .copy-icon{ display:none; }
+  .social-row{ display:none; }
+}

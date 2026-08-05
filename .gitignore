@@ -1,3 +1,6 @@
 *.zip
 .DS_Store
 .claude/
+
+# PDF gerado (regenere com ./tools/gerar-pdf.sh)
+portfolio-bruna-aquino.pdf

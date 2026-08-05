@@ -112,6 +112,26 @@ continuar legível sobre a foto.
 - Meta OG/Twitter + JSON-LD (`Person`) para link compartilhado e busca.
 - Contrastes de texto secundário sobre fundo escuro ajustados para AA.
 
+## Gerar o PDF
+```
+./tools/gerar-pdf.sh
+```
+Gera `portfolio-bruna-aquino.pdf` (fora do git, regenerável). O script não
+imprime o `index.html` direto de propósito: o site depende de JS para
+revelar as seções, animar os contadores e preencher as barras, então uma
+impressão crua sairia com metade do conteúdo invisível, os números em 0 e
+as barras vazias. Ele cria uma cópia temporária com um script que congela
+tudo no estado final, imprime pelo Chrome headless e apaga a cópia.
+
+A folha `@media print` no fim do `style.css` faz três coisas que o papel
+exige e a tela não:
+- converte hero e "Sobre mim" de foto absoluta para fluxo normal — sem
+  isso o conteúdo é recortado, porque no papel não existe scroll;
+- força `print-color-adjust: exact`, senão os blocos terracota e escuro
+  saem brancos;
+- mostra **as três plataformas** de métricas, não só a aba aberta — num
+  material enviado para marca isso conta.
+
 ## Pendências
 1. **Links das redes sociais** — Instagram, TikTok e YouTube estão como
    `href="#"`. Procure por `<!-- TODO:` em `index.html`, seção `id="contato"`.
