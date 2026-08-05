@@ -199,31 +199,37 @@ nav{
 @media(min-width:861px){ .mobile-panel{display:none;} }
 a:focus-visible, button:focus-visible{outline:2px solid var(--rust); outline-offset:3px; border-radius:2px;}
 
-/* ---------- hero (foto de fundo, texto por cima) ---------- */
+/* ---------- hero (foto na coluna direita, borda dissolvida) ---------- */
 .hero{
   position:relative; min-height:100svh; display:flex; align-items:center;
   padding:150px 0 90px; overflow:hidden; isolation:isolate;
 }
 .hero-inner{position:relative; z-index:3; width:100%;}
-.hero-photo{position:absolute; inset:0; z-index:0; will-change:transform;}
-.hero-photo img{
-  width:100%; height:100%; object-fit:cover; object-position:center;
+
+/* A capa e 4:3. Ocupando a largura toda numa tela 2.2:1, 39% da foto era
+   cortado no topo e na base. Limitada a coluna direita, a caixa fica perto
+   da proporcao da imagem e a composicao aparece quase inteira. */
+.hero-photo{position:absolute; right:0; top:0; bottom:0; width:57%; z-index:0; will-change:transform;}
+.hero-photo img{width:100%; height:100%; object-fit:cover; object-position:52% 42%;}
+.hero-photo{
+  -webkit-mask-image:
+    linear-gradient(90deg, transparent 0%, rgba(0,0,0,.45) 15%, #000 36%, #000 100%),
+    linear-gradient(180deg, transparent 0%, #000 9%, #000 88%, transparent 100%);
+  mask-image:
+    linear-gradient(90deg, transparent 0%, rgba(0,0,0,.45) 15%, #000 36%, #000 100%),
+    linear-gradient(180deg, transparent 0%, #000 9%, #000 88%, transparent 100%);
+  -webkit-mask-composite:source-in;
+  mask-composite:intersect;
 }
-/* dissolve esfumacado: foto a direita, texto legivel a esquerda */
-.hero-veil{
-  position:absolute; inset:0; z-index:1; pointer-events:none;
-  background:
-    linear-gradient(90deg, var(--cream) 0%, rgba(var(--cream-rgb),.97) 22%, rgba(var(--cream-rgb),.72) 38%, rgba(var(--cream-rgb),.18) 54%, rgba(var(--cream-rgb),0) 66%),
-    linear-gradient(180deg, rgba(var(--cream-rgb),.7) 0%, rgba(var(--cream-rgb),0) 18%, rgba(var(--cream-rgb),0) 80%, rgba(var(--cream-rgb),.8) 100%);
-}
+
 .hero-bg-grid{
-  position:absolute; inset:0; z-index:2; pointer-events:none;
+  position:absolute; inset:0; z-index:1; pointer-events:none;
   background-image:
     linear-gradient(var(--line) 1px, transparent 1px),
     linear-gradient(90deg, var(--line) 1px, transparent 1px);
   background-size:44px 44px;
-  -webkit-mask-image:linear-gradient(90deg, black, transparent 55%);
-  mask-image:linear-gradient(90deg, black, transparent 55%);
+  -webkit-mask-image:linear-gradient(90deg, black, transparent 52%);
+  mask-image:linear-gradient(90deg, black, transparent 52%);
   opacity:.4;
 }
 .hero-eyebrow{
@@ -231,16 +237,15 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--rust); outline-off
   color:var(--rust); text-transform:uppercase; margin-bottom:22px; display:block;
 }
 .hero h1{
-  font-size:clamp(58px, 9vw, 118px);
-  line-height:.92; margin:0 0 26px; color:var(--ink);
+  font-size:clamp(58px, 8.4vw, 108px);
+  line-height:.98; margin:0 0 26px; color:var(--ink);
 }
-.hero h1 .line2{display:block; margin-left:clamp(20px,6vw,90px);}
-.hero h1 .swash{color:inherit;}
+.hero h1 .line2{display:block; margin-left:clamp(20px,5vw,72px);}
 .hero-tag{
   font-size:12px; letter-spacing:.12em; text-transform:uppercase;
   color:var(--rust); font-weight:700; margin-bottom:14px; display:block;
 }
-.hero p.lede{max-width:430px; font-size:18px; color:var(--ink-soft); margin:0 0 34px;}
+.hero p.lede{max-width:400px; font-size:18px; color:var(--ink-soft); margin:0 0 34px;}
 .hero-ctas{display:flex; gap:16px; flex-wrap:wrap;}
 .btn{
   font-size:14px; font-weight:600; padding:15px 28px; border-radius:100px;
@@ -248,18 +253,20 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--rust); outline-off
 }
 .btn-primary{background:var(--rust); color:var(--paper);}
 .btn-primary:hover{background:var(--rust-deep); transform:translateY(-2px); box-shadow:0 10px 24px rgba(166,63,36,.28);}
-.btn-ghost{border:1px solid var(--ink); color:var(--ink); background:rgba(var(--cream-rgb),.6);}
+.btn-ghost{border:1px solid var(--ink); color:var(--ink);}
 .btn-ghost:hover{border-color:var(--rust); color:var(--rust); transform:translateY(-2px);}
 
-/* no mobile a foto vai para tras do texto: veu vertical garante leitura */
 @media(max-width:900px){
-  .hero{padding:130px 0 70px; align-items:flex-end;}
-  .hero-photo img{object-position:center;}
-  .hero-veil{
-    background:
-      linear-gradient(180deg, rgba(var(--cream-rgb),.8) 0%, rgba(var(--cream-rgb),.25) 26%, rgba(var(--cream-rgb),.82) 56%, var(--cream) 78%);
+  /* empilhado: foto vira faixa acima do texto, dissolvendo para baixo */
+  .hero{min-height:0; padding:96px 0 60px; flex-direction:column; align-items:stretch;}
+  .hero-photo{position:relative; width:100%; right:auto; height:64vw; max-height:440px; margin-bottom:30px;}
+  .hero-photo img{object-position:center 32%;}
+  .hero-photo{
+    -webkit-mask-image:linear-gradient(180deg, #000 0%, #000 66%, transparent 100%);
+    mask-image:linear-gradient(180deg, #000 0%, #000 66%, transparent 100%);
+    -webkit-mask-composite:source-over; mask-composite:add;
   }
-  .hero-bg-grid{-webkit-mask-image:linear-gradient(0deg, black, transparent 60%); mask-image:linear-gradient(0deg, black, transparent 60%);}
+  .hero-bg-grid{display:none;}
   .hero p.lede{max-width:none;}
 }
 
@@ -294,15 +301,15 @@ section{padding:120px 0; scroll-margin-top:80px;}
 
 /* a foto ocupa so a metade esquerda e sangra ate a borda da tela */
 .sobre-photo{position:absolute; left:0; top:0; bottom:0; width:54%; z-index:0;}
-.sobre-photo img{width:100%; height:100%; object-fit:cover; object-position:center 42%;}
+.sobre-photo img{width:100%; height:100%; object-fit:cover; object-position:68% 44%;}
 /* mascara esfumaca a borda direita e o topo/base: a foto dissolve no creme
    em vez de terminar num corte reto. mask-composite intersecta as duas. */
 .sobre-photo{
   -webkit-mask-image:
-    linear-gradient(90deg, #000 0%, #000 52%, rgba(0,0,0,.55) 76%, transparent 97%),
+    linear-gradient(90deg, #000 0%, #000 70%, rgba(0,0,0,.5) 88%, transparent 100%),
     linear-gradient(180deg, transparent 0%, #000 15%, #000 82%, transparent 100%);
   mask-image:
-    linear-gradient(90deg, #000 0%, #000 52%, rgba(0,0,0,.55) 76%, transparent 97%),
+    linear-gradient(90deg, #000 0%, #000 70%, rgba(0,0,0,.5) 88%, transparent 100%),
     linear-gradient(180deg, transparent 0%, #000 15%, #000 82%, transparent 100%);
   -webkit-mask-composite:source-in;
   mask-composite:intersect;
