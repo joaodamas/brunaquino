@@ -4,51 +4,43 @@
    ============================================================ */
 
 @font-face{
-  font-family:'Fraunces';
+  font-family:'Italiana';
   font-style:normal;
-  font-weight:400 700;
+  font-weight:400;
   font-display:swap;
-  src:url('../fonts/Fraunces-normal-latin.woff2') format('woff2');
+  src:url('../fonts/Italiana-latin.woff2') format('woff2');
   unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
 }
 @font-face{
-  font-family:'Fraunces';
+  font-family:'Pinyon Script';
   font-style:normal;
-  font-weight:400 700;
+  font-weight:400;
   font-display:swap;
-  src:url('../fonts/Fraunces-normal-latin-ext.woff2') format('woff2');
+  src:url('../fonts/PinyonScript-latin.woff2') format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face{
+  font-family:'Pinyon Script';
+  font-style:normal;
+  font-weight:400;
+  font-display:swap;
+  src:url('../fonts/PinyonScript-latin-ext.woff2') format('woff2');
   unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
 }
 @font-face{
-  font-family:'Fraunces';
-  font-style:italic;
+  font-family:'DM Sans';
+  font-style:normal;
   font-weight:400 700;
   font-display:swap;
-  src:url('../fonts/Fraunces-italic-latin.woff2') format('woff2');
+  src:url('../fonts/DMSans-latin.woff2') format('woff2');
   unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
 }
 @font-face{
-  font-family:'Fraunces';
-  font-style:italic;
+  font-family:'DM Sans';
+  font-style:normal;
   font-weight:400 700;
   font-display:swap;
-  src:url('../fonts/Fraunces-italic-latin-ext.woff2') format('woff2');
-  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
-}
-@font-face{
-  font-family:'Manrope';
-  font-style:normal;
-  font-weight:400 800;
-  font-display:swap;
-  src:url('../fonts/Manrope-normal-latin.woff2') format('woff2');
-  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-@font-face{
-  font-family:'Manrope';
-  font-style:normal;
-  font-weight:400 800;
-  font-display:swap;
-  src:url('../fonts/Manrope-normal-latin-ext.woff2') format('woff2');
+  src:url('../fonts/DMSans-latin-ext.woff2') format('woff2');
   unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
 }
 @font-face{
@@ -68,29 +60,6 @@
   unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
 }
 
-
-/* ---- Fontes da marca ----------------------------------------------------
-   Hatton  = titulos e aberturas de tema
-   Symphony = iniciais/capitulares
-   Coloque os arquivos em assets/fonts/ com estes nomes. Enquanto nao
-   existirem, o navegador cai no fallback (Fraunces) sem quebrar nada.       */
-@font-face{
-  font-family:'Hatton';
-  font-style:normal;
-  font-weight:400 700;
-  font-display:swap;
-  src:url('../fonts/Hatton.woff2') format('woff2'),
-      url('../fonts/Hatton.otf') format('opentype');
-}
-@font-face{
-  font-family:'Symphony';
-  font-style:normal;
-  font-weight:400;
-  font-display:swap;
-  src:url('../fonts/Symphony.woff2') format('woff2'),
-      url('../fonts/Symphony.otf') format('opentype');
-}
-
 :root{
   --cream:#F3EEE3;
   --paper:#FBF8F1;
@@ -106,9 +75,9 @@
   --cream-rgb:243,238,227;
 
   /* Hatton nos titulos, Symphony nas iniciais; Fraunces e o fallback */
-  --font-display:'Hatton','Fraunces',Georgia,serif;
-  --font-initial:'Symphony','Fraunces',Georgia,serif;
-  --font-body:'Manrope',system-ui,sans-serif;
+  --font-display:'Italiana',Georgia,serif;
+  --font-initial:'Pinyon Script',cursive;
+  --font-body:'DM Sans',system-ui,sans-serif;
   --font-mono:'JetBrains Mono',ui-monospace,monospace;
 }
 *{box-sizing:border-box;}
@@ -147,15 +116,15 @@ button{font-family:inherit; cursor:pointer;}
 
 .display{
   font-family:var(--font-display);
-  font-weight:500;
+  font-weight:400;
   letter-spacing:-0.01em;
 }
 .dropcap,.swash{
   font-family:var(--font-initial);
-  font-style:italic;
   font-weight:400;
-  font-optical-sizing:auto;
+  font-size:1.34em;      /* script tem caixa-alta menor: compensa o tamanho */
   line-height:1;
+  color:inherit;          /* mesma cor do restante do titulo */
 }
 
 /* ---------- progress bar ---------- */
@@ -178,8 +147,8 @@ nav{
   display:flex; align-items:center; justify-content:space-between;
 }
 .logo{
-  font-family:var(--font-display); font-style:italic; font-weight:500;
-  font-size:22px; color:var(--ink);
+  font-family:var(--font-display); font-weight:400;
+  font-size:24px; letter-spacing:.06em; color:var(--ink);
 }
 .logo span{color:var(--rust);}
 .nav-links{display:flex; gap:30px; list-style:none; margin:0; padding:0;}
@@ -259,7 +228,7 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--rust); outline-off
   line-height:.92; margin:0 0 26px; color:var(--ink);
 }
 .hero h1 .line2{display:block; margin-left:clamp(20px,6vw,90px);}
-.hero h1 .swash{font-family:var(--font-initial); font-style:italic; font-weight:400; color:var(--rust);}
+.hero h1 .swash{color:inherit;}
 .hero-tag{
   font-size:12px; letter-spacing:.12em; text-transform:uppercase;
   color:var(--rust); font-weight:700; margin-bottom:14px; display:block;
@@ -367,7 +336,7 @@ section{padding:120px 0; scroll-margin-top:80px;}
 .about-text p b{color:var(--ink); font-weight:700;}
 .about-text .quotebar{
   border-left:2px solid var(--rust); padding-left:22px; margin:36px 0;
-  font-family:var(--font-display); font-style:italic; font-size:22px; color:var(--ink);
+  font-family:var(--font-display); font-size:25px; line-height:1.45; color:var(--ink);
 }
 
 /* ---------- services ---------- */
@@ -382,7 +351,7 @@ section{padding:120px 0; scroll-margin-top:80px;}
   font-family:var(--font-mono); font-size:12px; color:var(--rust-soft); letter-spacing:.1em;
 }
 .service-card h3{
-  font-family:var(--font-display); font-weight:500; font-size:26px; margin:14px 0 14px;
+  font-family:var(--font-display); font-weight:400; font-size:28px; margin:14px 0 14px;
 }
 .service-card p{color:var(--ink-soft); font-size:15px; margin:0;}
 .service-card::before{
@@ -441,7 +410,7 @@ section{padding:120px 0; scroll-margin-top:80px;}
   display:flex; align-items:center; justify-content:center; background:var(--paper);
 }
 .placeholder .phone-screen span{
-  font-family:var(--font-display); font-style:italic; color:var(--ink-soft); font-size:14px; text-align:center; padding:0 20px;
+  font-family:var(--font-display); color:var(--ink-soft); font-size:15px; text-align:center; padding:0 20px;
 }
 
 
@@ -491,11 +460,11 @@ section{padding:120px 0; scroll-margin-top:80px;}
 .step-num{
   position:absolute; left:-56px; top:-4px; width:40px; height:40px; border-radius:50%;
   background:var(--paper); border:1px solid var(--line); display:flex; align-items:center; justify-content:center;
-  font-family:var(--font-display); font-style:italic; font-size:17px; color:var(--rust);
+  font-family:var(--font-display); font-size:19px; color:var(--rust);
   transition:background .3s, border-color .3s;
 }
 .step.in .step-num{background:var(--rust); color:var(--paper); border-color:var(--rust);}
-.step h4{font-family:var(--font-display); font-weight:500; font-size:21px; margin:0 0 10px;}
+.step h4{font-family:var(--font-display); font-weight:400; font-size:23px; margin:0 0 10px;}
 .step p{color:var(--ink-soft); font-size:15px; margin:0; max-width:520px;}
 
 /* ---------- metrics (dark) ---------- */
@@ -517,7 +486,7 @@ section{padding:120px 0; scroll-margin-top:80px;}
 @media(max-width:900px){.metric-cards{grid-template-columns:repeat(2,1fr);} .metric-cards.five-col{grid-template-columns:repeat(2,1fr);}}
 .metric-card{background:var(--dark-card); padding:26px 22px;}
 .metric-card .val{
-  font-family:var(--font-display); font-weight:600; font-size:clamp(26px,3vw,34px); color:var(--cream);
+  font-family:var(--font-display); font-weight:400; font-size:clamp(30px,3.4vw,40px); color:var(--cream);
   display:block;
 }
 .metric-card .lbl{font-size:12px; color:rgba(243,238,227,.78); margin-top:6px; display:block;}

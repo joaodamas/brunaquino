@@ -16,7 +16,7 @@ e acesse `http://localhost:8000`.
 index.html              → todo o conteúdo/seções
 assets/css/style.css    → paleta, tipografia, layout, responsividade
 assets/js/main.js       → marquee, reveal, nichos, abas de métricas, copiar e-mail
-assets/fonts/           → Fraunces, Manrope e JetBrains Mono (self-hosted, .woff2)
+assets/fonts/           → Italiana, Pinyon Script, DM Sans, JetBrains Mono (.woff2)
 assets/img/             → fotos de cada seção
 ```
 
@@ -26,21 +26,32 @@ itálico, cards de serviço em grid com filete) + as fotos reais do acervo.
 
 | Papel | Fonte | Token CSS |
 |---|---|---|
-| Títulos e aberturas de tema | **Hatton** | `--font-display` |
-| Iniciais / capitulares | **Symphony** | `--font-initial` |
-| Corpo e navegação | **Manrope** | `--font-body` |
+| Títulos e aberturas de tema | **Italiana** | `--font-display` |
+| Iniciais / capitulares | **Pinyon Script** | `--font-initial` |
+| Corpo e navegação | **DM Sans** | `--font-body` |
 | Eyebrows, tags, marquee | **JetBrains Mono** | `--font-mono` |
 
-Hatton e Symphony são comerciais e **ainda não estão no repo**. Os
-`@font-face` já existem no topo do `style.css` apontando para
-`assets/fonts/Hatton.woff2` e `assets/fonts/Symphony.woff2` (com `.otf`
-como alternativa). Enquanto os arquivos não chegarem, o navegador cai no
-fallback **Fraunces** sem quebrar nada — basta soltar os arquivos com
-esses nomes na pasta que o site passa a usá-los, sem tocar no CSS.
+Todas do Google Fonts, gratuitas para uso comercial e servidas do próprio
+domínio (`assets/fonts/`), subsets latin e latin-ext. Sem CDN — nada sai
+para fora no carregamento.
 
-Manrope, JetBrains Mono e o fallback Fraunces são servidos do próprio
-domínio (`assets/fonts/`), subsets latin e latin-ext. Sem CDN do Google
-Fonts — nada sai para fora no carregamento.
+Duas armadilhas destas fontes, já tratadas no CSS:
+
+- **Italiana tem um único peso (400) e não tem itálico.** Todo lugar que
+  usava `font-weight:500/600` ou `font-style:italic` no `--font-display`
+  foi ajustado para 400/normal. Se voltar a pedir peso ou itálico, o
+  navegador sintetiza e o resultado fica borrado numa serifada fina como
+  essa — os tamanhos foram compensados para manter a hierarquia.
+- **Italiana só tem o subset latin.** Confirmado que cobre todos os
+  acentos do português (à á â ã ç é ê í ó ô õ ú), então nenhum caractere
+  cai para fonte de fallback no meio da palavra.
+
+As iniciais ficam na **mesma cor do restante do título** (`color:inherit`),
+não no terracota — decisão de 4/8/2026.
+
+Hatton e Symphony (as fontes comerciais da marca) foram descartadas: são
+pagas, a Symphony tinha quatro homônimas de fundições diferentes e não
+conseguimos identificar qual era a certa.
 
 ### Paleta
 | Token | Cor | Uso |
@@ -102,18 +113,16 @@ continuar legível sobre a foto.
 - Contrastes de texto secundário sobre fundo escuro ajustados para AA.
 
 ## Pendências
-1. **Fontes Hatton e Symphony** — subir os `.woff2` (ou `.otf`) em
-   `assets/fonts/`. Sem eles o site roda no fallback Fraunces.
-2. **Links das redes sociais** — Instagram, TikTok e YouTube estão como
+1. **Links das redes sociais** — Instagram, TikTok e YouTube estão como
    `href="#"`. Procure por `<!-- TODO:` em `index.html`, seção `id="contato"`.
-3. **Vídeos** — decidido: arquivos locais no repo. A estrutura já está
+2. **Vídeos** — decidido: arquivos locais no repo. A estrutura já está
    pronta (CSS do `<video>` no mockup, autoplay mudo em loop ao entrar na
    tela, pausa ao sair, botão de som opcional). Falta subir os arquivos em
    `assets/video/` — veja `assets/video/LEIA-ME.md` para os nomes
    esperados, o snippet de markup e o comando de compressão.
-4. **Marcas parceiras** — a seção existe com 4 slots "Sua marca aqui";
+3. **Marcas parceiras** — a seção existe com 4 slots "Sua marca aqui";
    falta subir os logos reais.
-5. **E-mail** — está `brunaquino.mkt@gmail.com`. Trocar se for outro
+4. **E-mail** — está `brunaquino.mkt@gmail.com`. Trocar se for outro
    (ou acrescentar WhatsApp).
-6. **Métricas** — vale marcar o período de cada número (ex.: "TikTok,
+5. **Métricas** — vale marcar o período de cada número (ex.: "TikTok,
    últimos 28 dias") para dar contexto a quem avalia.
