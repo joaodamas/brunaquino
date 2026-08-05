@@ -125,7 +125,14 @@ button{font-family:inherit; cursor:pointer;}
   font-size:1.34em;      /* script tem caixa-alta menor: compensa o tamanho */
   line-height:1;
   color:inherit;          /* mesma cor do restante do titulo */
+  /* o swash da Pinyon Script transborda a caixa da letra: sem esse respiro
+     a capitular monta na palavra seguinte */
+  display:inline-block;
+  margin-right:.16em;
+  margin-left:.03em;
 }
+/* no hero as letras sao muito maiores, o transbordo cresce junto */
+.hero h1 .swash{margin-right:.1em;}
 
 /* ---------- progress bar ---------- */
 #progress{
@@ -274,8 +281,8 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--rust); outline-off
 /* ---------- generic section ---------- */
 section{padding:120px 0; scroll-margin-top:80px;}
 @media(max-width:720px){section{padding:80px 0;}}
-.section-head{max-width:640px; margin-bottom:64px;}
-.section-head h2{font-size:clamp(38px,5vw,58px); margin:0; line-height:1.05;}
+.section-head{max-width:700px; margin-bottom:56px;}
+.section-head h2{font-size:clamp(38px,5vw,58px); margin:0; line-height:1.12; letter-spacing:.01em;}
 
 .js .reveal{opacity:0; transform:translateY(28px); transition:opacity .7s ease, transform .7s ease;}
 .js .reveal.in{opacity:1; transform:translateY(0);}
@@ -343,7 +350,8 @@ section{padding:120px 0; scroll-margin-top:80px;}
 .service-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:2px; background:var(--line); border:1px solid var(--line);}
 @media(max-width:720px){.service-grid{grid-template-columns:1fr;}}
 .service-card{
-  background:var(--paper); padding:42px 38px; position:relative; overflow:hidden;
+  background:var(--paper); padding:40px 36px 44px; position:relative; overflow:hidden;
+  display:flex; flex-direction:column;
   transition:background .3s ease;
 }
 .service-card:hover{background:#fff;}
@@ -351,7 +359,7 @@ section{padding:120px 0; scroll-margin-top:80px;}
   font-family:var(--font-mono); font-size:12px; color:var(--rust-soft); letter-spacing:.1em;
 }
 .service-card h3{
-  font-family:var(--font-display); font-weight:400; font-size:28px; margin:14px 0 14px;
+  font-family:var(--font-body); font-weight:600; font-size:21px; letter-spacing:-.01em; margin:12px 0 14px;
 }
 .service-card p{color:var(--ink-soft); font-size:15px; margin:0;}
 .service-card::before{
@@ -464,7 +472,7 @@ section{padding:120px 0; scroll-margin-top:80px;}
   transition:background .3s, border-color .3s;
 }
 .step.in .step-num{background:var(--rust); color:var(--paper); border-color:var(--rust);}
-.step h4{font-family:var(--font-display); font-weight:400; font-size:23px; margin:0 0 10px;}
+.step h4{font-family:var(--font-body); font-weight:600; font-size:18px; letter-spacing:-.01em; margin:0 0 10px;}
 .step p{color:var(--ink-soft); font-size:15px; margin:0; max-width:520px;}
 
 /* ---------- metrics (dark) ---------- */
@@ -493,7 +501,7 @@ section{padding:120px 0; scroll-margin-top:80px;}
 .metric-card .delta{font-family:var(--font-mono); font-size:11px; color:#9fcf8b; margin-top:8px; display:block;}
 .metric-demo{display:grid; grid-template-columns:1fr 1fr; gap:40px;}
 @media(max-width:760px){.metric-demo{grid-template-columns:1fr;}}
-.demo-block h5{font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:rgba(243,238,227,.78); margin:0 0 18px; font-weight:600;}
+.demo-block h5{font-family:var(--font-body); font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:rgba(243,238,227,.78); margin:0 0 18px; font-weight:600;}
 .bar-row{margin-bottom:14px;}
 .bar-row .bar-top{display:flex; justify-content:space-between; font-size:13px; margin-bottom:6px; color:rgba(243,238,227,.85);}
 .bar-track{height:8px; background:rgba(243,238,227,.12); border-radius:100px; overflow:hidden;}
